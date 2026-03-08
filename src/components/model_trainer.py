@@ -32,7 +32,7 @@ class ModelTrainingConfig:
 class ModelTrainer:
     def __init__(self):
         self.model_trainer_config=ModelTrainingConfig()
-    def intiate_model_trainer(self,train_array,test_array):
+    def initiate_model_trainer(self,train_array,test_array):
         try:
             logging.info("splitting training and test input")
             X_train,y_train,X_test,y_test=(

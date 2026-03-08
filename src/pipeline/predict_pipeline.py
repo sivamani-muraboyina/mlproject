@@ -56,5 +56,20 @@ class CustomData:
         except Exception as e:
             raise CustomException(e,sys)
 
+    def validate_data(self):
+        try:
+            # Check if scores are within the 0-100 range
+            if not (0 <= self.reading_score <= 100):
+                raise ValueError(f"Reading score {self.reading_score} is out of range (0-100)")
+            
+            if not (0 <= self.writing_score <= 100):
+                raise ValueError(f"Writing score {self.writing_score} is out of range (0-100)")
+                
+            # You can also add checks for empty strings if needed
+            if not self.gender or not self.race_ethnicity:
+                 raise ValueError("Categorical fields cannot be empty")
+
+        except Exception as e:
+            raise CustomException(e, sys)
     
 

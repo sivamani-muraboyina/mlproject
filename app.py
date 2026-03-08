@@ -30,13 +30,15 @@ def predict_datapoint():
             writing_score=float(request.form.get('writing_score'))
 
         )
+
+        data.validate_data()## validating data to prevent crash
         pred_df=data.get_data_as_data_frame()
         print(pred_df)
         
         predict_pipline=PredictPipeline()
         results=predict_pipline.predict(pred_df)
         
-        return render_template('home.html',results=results[0])
+        return render_template('home.html',results=round(results[0],2))
     
 if __name__=='__main__':
     app.run(host='0.0.0.0',debug=True)      
